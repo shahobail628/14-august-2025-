@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>14 August - Azadi Mubarak</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    html, body {
+      height: 100%;
+      background: black;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle at center, rgba(0, 255, 136, 0.2) 0%, transparent 70%);
+      animation: greenGlow 5s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    @keyframes greenGlow {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    .screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      text-align: center;
+      color: white;
+    }
+
+    .landing {
+      background: linear-gradient(45deg, #00ff88, #003300, #009966, #00ffaa);
+      background-size: 500% 500%;
+      animation: landBg 10s linear infinite, zoomPulse 6s ease-in-out infinite;
+    }
+    @keyframes landBg {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    @keyframes zoomPulse {
+      0%,100% {transform: scale(1);}
+      50% {transform: scale(1.03);}
+    }
+
+    .reveal-button {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      color: #fff;
+      background: transparent;
+      border: 2px solid #00ff88;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ff88;
+      animation: glow 2s infinite ease-in-out;
+    }
+    @keyframes glow {
+      0%,100% {box-shadow: 0 0 10px #00ff88;}
+      50% {box-shadow: 0 0 20px #ffffff;}
+    }
+
+    .celebration {
+      display: none;
+      flex-direction: column;
+      justify-content: space-evenly;
+      background: linear-gradient(135deg, #001100, #002200);
+      animation: bgFlow 20s infinite;
+      padding: 20px;
+    }
+    @keyframes bgFlow {
+      0% {background-position: 0% 0%;}
+      50% {background-position: 100% 100%;}
+      100% {background-position: 0% 0%;}
+    }
+
+    .main-heading {
+      font-size: 2.5em;
+      font-weight: bold;
+      background: linear-gradient(45deg, #00ff88, #ffffff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: disco 2s infinite linear;
+    }
+    @keyframes disco {
+      0% {filter: hue-rotate(0deg);}
+      100% {filter: hue-rotate(360deg);}
+    }
+
+    .azadi-img {
+      width: 80%;
+      max-width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #00ff88;
+      animation: pulseImg 5s infinite ease-in-out;
+      cursor: pointer;
+    }
+    @keyframes pulseImg {
+      0%,100% {transform: scale(1);}
+      50% {transform: scale(1.05);}
+    }
+
+    .greeting {
+      margin-top: 20px;
+      font-size: 1.3em;
+      color: white;
+    }
+    .greeting .name {
+      font-weight: bold;
+      color: #00ff88;
+      animation: blink 1.5s infinite;
+    }
+    @keyframes blink {
+      0%,100% {opacity: 1;}
+      50% {opacity: 0.7;}
+    }
+
+    .inputs {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input, textarea {
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 10px;
+      border: 2px solid #00ff88;
+      background: #111;
+      color: #fff;
+      width: 90vw;
+      max-width: 300px;
+    }
+
+    .share-button {
+      margin-top: 10px;
+      background: #25D366;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 25px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px #25D366;
+    }
+
+    .saifullah-tag {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      font-size: 1.1em;
+      font-weight: bold;
+      background: linear-gradient(45deg, #00ff88, #ffffff, #00ff88);
+      background-size: 200% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: saifGlow 3s linear infinite;
+    }
+    @keyframes saifGlow {
+      0% {background-position: 0% 50%;}
+      100% {background-position: 200% 50%;}
+    }
+
+    .pop-effect {
+      animation: pop 0.4s ease-out forwards;
+    }
+
+    @keyframes pop {
+      0% {transform: scale(1);}
+      50% {transform: scale(1.5);}
+      100% {transform: scale(0); opacity: 0;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Landing Screen -->
+<div class="screen landing" id="landing">
+  <h1>🎉 Ek khaas Azadi ka paighaam aap ke liye 🎉</h1>
+  <button class="reveal-button" onclick="reveal()">👇 Click to Reveal 👇</button>
+</div>
+
+<!-- Celebration Screen -->
+<div class="screen celebration" id="celebration">
+  <h1 class="main-heading">🇵🇰 Pakistan Zindabad 🇵🇰</h1>
+  <img src="azadi.gif" alt="Azadi Celebration" class="azadi-img" id="balloonImg" />
+  <div class="greeting" id="greetingText">Kisi ki taraf se: Azadi Mubarak ho!</div>
+
+  <div class="inputs">
+    <input type="text" id="nameInput" placeholder="Apna naam likhein" />
+    <textarea id="msgInput" rows="2" placeholder="Paighaam likhein..."></textarea>
+    <a href="#" class="share-button" id="whatsappShare">📱 WhatsApp par Share karein</a>
+  </div>
+
+  <div class="saifullah-tag">✨ Saifullah ✨</div>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="azadi.mp3" type="audio/mpeg" />
+</audio>
+
+<script>
+  function reveal() {
+    document.getElementById('landing').style.display = 'none';
+    document.getElementById('celebration').style.display = 'flex';
+    document.getElementById('bgMusic').play();
+    updateGreeting();
+  }
+
+  function updateGreeting() {
+    const name = document.getElementById('nameInput').value || 'Kisi';
+    const msg = document.getElementById('msgInput').value || 'Azadi Mubarak ho!';
+    document.getElementById('greetingText').innerHTML = `<span class="name">${name}</span> ki taraf se: ${msg}`;
+    document.getElementById('whatsappShare').href = `https://wa.me/?text=${encodeURIComponent(name + ' ki taraf se: ' + msg)}`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('nameInput').addEventListener('input', updateGreeting);
+    document.getElementById('msgInput').addEventListener('input', updateGreeting);
+
+    // Balloon pop effect on click
+    document.getElementById('balloonImg').addEventListener('click', function() {
+      this.classList.add('pop-effect');
+      setTimeout(() => {
+        this.style.display = 'none';
+      }, 400);
+    });
+  });
+</script>
+
+</body>
+</html>
